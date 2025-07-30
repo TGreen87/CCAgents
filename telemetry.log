@@ -1,0 +1,102 @@
+# SuperClaude Telemetry Log
+# Format: YAML entries separated by ---
+# This file tracks all agent orchestration activities
+
+---
+session_id: "2025-07-29-init"
+timestamp: "2025-07-29T10:00:00Z"
+event_type: "system_initialization"
+details:
+  message: "Telemetry system initialized"
+  version: "1.0.0"
+  agents_available: 17
+---
+session_id: "2025-07-29-example-001"
+timestamp: "2025-07-29T10:15:00Z"
+operation: "implement_user_authentication"
+orchestration:
+  strategy: "parallel"
+  complexity_score: 0.8
+  domains_detected: ["backend", "security", "database"]
+  agents:
+    - agent: "api-designer"
+      role: "primary"
+      task: "Design authentication API endpoints"
+      status: "completed"
+      duration: 45
+      tokens_used: 2500
+      quality_score: 0.95
+    - agent: "security-auditor"
+      role: "validator"
+      task: "Review security implementation"
+      status: "completed"
+      duration: 30
+      tokens_used: 1800
+      quality_score: 0.98
+    - agent: "database-engineer"
+      role: "support"
+      task: "Design user schema"
+      status: "completed"
+      duration: 25
+      tokens_used: 1200
+      quality_score: 0.92
+  handoffs: 2
+  total_duration: 100
+  synthesis_time: 5
+outcome: "success"
+quality_metrics:
+  completeness: 1.0
+  consistency: 0.98
+  security_validated: true
+  tests_passed: true
+---
+session_id: "2025-07-29-example-002"
+timestamp: "2025-07-29T10:30:00Z"
+operation: "diagnose_performance_issue"
+orchestration:
+  strategy: "sequential"
+  complexity_score: 0.9
+  trigger: "performance_degradation_detected"
+  agents:
+    - agent: "problem-solver"
+      role: "coordinator"
+      task: "Diagnose root cause"
+      status: "completed"
+      duration: 60
+      tokens_used: 3000
+      findings:
+        - "Database queries taking >1s"
+        - "Missing indexes identified"
+        - "N+1 query pattern detected"
+    - agent: "performance-profiler"
+      role: "specialist"
+      task: "Profile application"
+      status: "completed"
+      duration: 120
+      tokens_used: 4000
+      metrics:
+        bottleneck: "database"
+        impact: "80% of response time"
+    - agent: "database-engineer"
+      role: "resolver"
+      task: "Optimize queries"
+      status: "completed"
+      duration: 90
+      tokens_used: 2800
+      improvements:
+        - "Added composite index"
+        - "Rewrote N+1 queries"
+        - "Response time: 1200ms → 150ms"
+recovery:
+  strategy: "immediate_optimization"
+  rollback_required: false
+  success: true
+outcome: "resolved"
+post_mortem:
+  lessons_learned:
+    - "Monitor query performance continuously"
+    - "Add index analysis to deployment checklist"
+  preventive_measures:
+    - "Automated query analysis in CI/CD"
+    - "Performance regression tests"
+---
